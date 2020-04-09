@@ -41,7 +41,7 @@ namespace Fhir.Anonymizer.Core
                     }
 
                     var visitor = new AnonymizationOperationVisitor(_processors[method]);
-                    foreach (var matchNode in subNode.Select(rule.Expression).Cast<ElementNode>())
+                    foreach (var matchNode in subNode.WildcardSelect(rule.Expression).Cast<ElementNode>())
                     {
                         matchNode.Accept(visitor, context);
                     }

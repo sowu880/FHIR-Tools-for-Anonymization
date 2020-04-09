@@ -1,0 +1,58 @@
+{
+  "resourceType": "QuestionnaireResponse",
+  "id": "f201",
+  "status": "completed",
+  "subject": {
+    "reference": "Patient/f201"
+  },
+  "authored": "2013-05-24T00:00:00+01:00",
+  "author": {
+    "reference": "Practitioner/f201"
+  },
+  "source": {
+    "reference": "Practitioner/f201"
+  },
+  "item": [
+    {
+      "linkId": "1",
+      "item": [
+        {
+          "linkId": "1.1"
+        }
+      ]
+    },
+    {
+      "linkId": "2",
+      "item": [
+        {
+          "linkId": "2.1"
+        },
+        {
+          "linkId": "2.2",
+          "answer": [
+            {
+              "valueDate": "1960-02-17"
+            }
+          ]
+        },
+        {
+          "linkId": "2.3"
+        },
+        {
+          "linkId": "2.4"
+        }
+      ]
+    },
+    {
+      "linkId": "3",
+      "item": [
+        {
+          "linkId": "3.1"
+        },
+        {
+          "linkId": "3.2"
+        }
+      ]
+    }
+  ]
+}

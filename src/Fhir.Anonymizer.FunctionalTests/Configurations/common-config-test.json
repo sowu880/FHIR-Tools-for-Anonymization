@@ -1,0 +1,59 @@
+﻿{
+  "fhirPathRules": {
+    "QuestionnaireResponse.*.text": "redact",
+    "QuestionnaireResponse.answer*.value as string": "redact",
+
+    "Organization.address": "keep",
+    "HumanName*.use": "keep",
+    "Address*.state": "keep",
+    "Address*.country": "keep",
+    "Address*.where(city='KeepTest')": "keep",
+
+    "Patient.generalPractitioner": "redact",
+    "Patient.link.other": "redact",
+
+    "PractitionerRole.practitioner": "redact",
+    "PractitionerRole.location": "redact",
+    "PractitionerRole.notAvailable.description": "redact",
+    "PractitionerRole.availabilityExceptions": "redact",
+
+    "Person.link.target": "redact",
+
+    "Organization.identifier": "keep",
+    "Organization.telecom": "keep",
+
+    "date*": "dateShift",
+    "dateTime*": "dateShift",
+    "instant*": "dateShift",
+    "Identifier*": "redact",
+    "HumanName*": "redact",
+    "Address*": "redact",
+    "Annotation*": "redact",
+    "Attachment*": "redact",
+    "ContactPoint*": "redact",
+    "Narrative*": "redact",
+    "Reference*.display": "redact"
+  },
+  "parameters": {
+    "dateShiftKey": "123",
+    "enablePartialAgesForRedact": true,
+    "enablePartialDatesForRedact": true,
+    "enablePartialZipCodesForRedact": true,
+    "restrictedZipCodeTabulationAreas": [
+      "036",
+      "059",
+      "102",
+      "203",
+      "205",
+      "369",
+      "556",
+      "692",
+      "821",
+      "823",
+      "878",
+      "879",
+      "884",
+      "893"
+    ]
+  }
+}

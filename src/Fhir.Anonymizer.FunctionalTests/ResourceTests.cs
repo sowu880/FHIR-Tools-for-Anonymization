@@ -16,6 +16,7 @@ namespace Fhir.Anonymizer.FunctionalTests
         public void GivenAPatientResource_WhenAnonymizing_ThenAnonymizedJsonShouldBeReturned()
         {
             FunctionalTestUtility.VerifySingleJsonResourceFromFile(engine, ResourceTestsFile("patient-basic.json"), ResourceTestsFile("patient-basic-target.json"));
+            FunctionalTestUtility.VerifySingleJsonResourceFromFile(engine, ResourceTestsFile("questionnaireresponse-basic.json"), ResourceTestsFile("questionnaireresponse-basic-target.json"));
         }
 
         private string ResourceTestsFile(string fileName)

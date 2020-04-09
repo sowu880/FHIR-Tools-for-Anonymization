@@ -34,7 +34,7 @@ namespace Fhir.Anonymizer.Core
 
             if (_configurationManger.FhirPathRules != null)
             {
-                FhirPathCompiler.DefaultSymbolTable.AddExtensionSymbols();
+                FhirPathElementNodeExtension.ExtendFhirCompilerSymbols();
                 anonymizeLogic = new InternalAnonymizeLogic(_configurationManger.FhirPathRules, _processors);
             }
 
@@ -90,7 +90,7 @@ namespace Fhir.Anonymizer.Core
             var resourceId = root.GetNodeId();
             foreach (var rule in resourceContext.RuleList)
             {
-                var matchedNodes = root.Select(rule.Path).Cast<ElementNode>();
+                var matchedNodes = root.WildcardSelect(rule.Path).Cast<ElementNode>();
 
                 _logger.LogDebug(rule.Type == AnonymizerRuleType.PathRule ?
                     $"Path {rule.Source} matches {matchedNodes.Count()} nodes in resource ID {resourceId}." :

@@ -4,6 +4,8 @@
     "Patient.nodesByType('Address').state": "keep",
     "Patient.nodesByType('Address').country": "keep",
     "Patient.nodesByType('Address').where(city='KeepTest')": "keep",
+    "QuestionnaireResponse.nodesByName('text')": "redact",
+    "QuestionnaireResponse.nodesByName('answer').value as string": "redact",
 
     "Patient.generalPractitioner": "redact",
     "Patient.link.other": "redact",
@@ -38,7 +40,9 @@
     "nodesByType('Annotation')": "redact",
     "nodesByType('Attachment')": "redact",
     "nodesByType('ContactPoint')": "redact",
-    "nodesByType('Narrative')": "redact"
+    "nodesByType('Narrative')": "redact",
+    "nodesByType('Reference').display": "redact"
+
   },
   "parameters": {
     "dateShiftKey": "123",
