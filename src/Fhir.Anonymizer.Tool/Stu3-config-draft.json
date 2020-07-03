@@ -65,7 +65,7 @@
     {"path": "FamilyMemberHistory.age", "method": "redact"},
     {"path": "FamilyMemberHistory.deceased", "method": "redact"},
     {"path": "FamilyMemberHistory.condition.onset", "method": "redact"},
-    {"path": "ClinicalImpression.despription", "method": "redact"}, //Newadd
+    {"path": "ClinicalImpression.description", "method": "redact"}, //Newadd
     {"path": "ClinicalImpression.summary", "method": "redact"},
     {"path": "ClinicalImpression.finding.basis", "method": "redact"},
     {"path": "DetectedIssue.detail", "method": "redact"},
