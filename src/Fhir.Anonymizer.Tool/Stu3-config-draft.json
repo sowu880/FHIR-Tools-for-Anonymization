@@ -35,7 +35,7 @@
     //{"path": "Device.serialNumber", "method": "redact"},
     //{"path": "Device.deviceName", "method": "redact"},
     {"path": "DeviceComponent.ProductionSpecification.productionSpec", "method" : "redact"}, ///Newadd
-    {"path": "Task.definitionUri","method": "redact" }, ///??????????
+    //{"path": "Task.definitionUri","method": "redact" }, ///??????????
     {"path": "Task.description", "method": "redact"},
     {"path": "Task.input.value", "method": "redact"},
     {"path": "Task.output.value", "method": "redact"},
