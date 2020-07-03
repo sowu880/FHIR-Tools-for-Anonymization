@@ -17,6 +17,11 @@
     {"path": "PractitionerRole.availabilityExceptions", "method": "redact"},
     {"path": "Group.name", "method": "redact"},
     {"path": "Group.characteristic.value", "method": "redact"},
+    {"path": "HealthcareService.comment", "method": "redact"},  ///Newadd 
+    {"path": "HealthcareService.availabilityExceptions", "method": "redact"}, ///Newadd 
+    {"path": "HealthcareService.extraDetails", "method": "redact"}, ///Newadd
+    {"path": "HealthcareService.eligibility.comment", "method": "redact"}, ///Newadd
+    {"path": "HealthcareService.notAvaliable.description", "method": "redact"}, ///Newadd
     {"path": "Endpoint.name", "method": "redact"},
     {"path": "Endpoint.address", "method": "redact"},
     {"path": "Location.name", "method": "redact"},
@@ -170,11 +175,7 @@
     {"path": "InsurancePlan.alias", "method": "redact"},
     {"path": "InsurancePlan.coverage.benefit.requirement", "method": "redact"},
     {"path": "InsurancePlan.plan.generalCost.comment", "method": "redact"},
-    {"path": "HealthcareService.comment", "method": "redact"},  ///Newadd 
-    {"path": "HealthcareService.availabilityExceptions", "method": "redact"}, ///Newadd 
-    {"path": "HealthcareService.extraDetails", "method": "redact"}, ///Newadd
-    {"path": "HealthcareService.eligibility.comment", "method": "redact"}, ///Newadd
-    {"path": "HealthcareService.notAvaliable.description", "method": "redact"}, ///Newadd
+    
     
     {"path": "nodesByType('Expression').description", "method": "redact"},  //Newadd
     {"path": "nodesByType('Expression').expression", "method": "redact"},   //Newadd
