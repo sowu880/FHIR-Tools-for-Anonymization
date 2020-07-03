@@ -10,7 +10,7 @@
     {"path": "nodesByType('HumanName').use", "method": "keep"},
     {"path": "nodesByType('Address').country", "method": "keep"},
     {"path": "nodesByType('Address').state", "method": "keep"},
-    {"path": "Resource.animal","method": "keep"}, ///Newadd ???????
+    {"path": "Patient.animal","method": "keep"}, ///Newadd ???????
     
     {"path": "Resource.id", "method": "cryptoHash"},
     {"path": "Bundle.entry.fullUrl", "method": "redact"},
@@ -165,7 +165,7 @@
     {"path": "PaymentReconciliation.processNote.text", "method": "redact"},
     {"path": "Account.name", "method": "redact"},
     {"path": "Account.description", "method": "redact"},
-    {"path": "ChargeItem.definition", "method": "redact"},   ///??????????????????
+    //{"path": "ChargeItem.definition", "method": "redact"},   ///??????????????????
     {"path": "ChargeItem.overrideReason", "method": "redact"},
     //{"path": "ChargeItemDefinition.title", "method": "redact"},
     //{"path": "ChargeItemDefinition.publisher", "method": "redact"},
@@ -216,8 +216,7 @@
     //{"path": "Patient.where(animal.exists()).name", "method": "keep"}, ///Newadd
     
     
-    {"path": "nodesByType('Dosage').text", "method": "cryptoHash"} ///Newadd
-    {"path": "nodesByType('oid')", "method": "redact"}, //????????????????????
+    {"path": "nodesByType('Dosage').text", "method": "redact"} ///Newadd
     {"path": "nodesByType('Contributor').name", "method": "redact"},  ///Newadd
     {"path": "nodesByType('Attachment').title", "method": "redact"},   
     {"path": "nodesByType('Attachment').url", "method": "redact"},   
