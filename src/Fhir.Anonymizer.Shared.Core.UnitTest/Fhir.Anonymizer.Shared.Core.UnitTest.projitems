@@ -26,6 +26,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Processors\CryptoHashProcessorTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Processors\DateShiftProcessorTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Processors\RedactProcessorTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\SubstituteUtilityTests .cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\EncryptUtilityTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\CryptoHashUtilityTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\DateTimeUtilityTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\PostalCodeUtilityTests.cs" />

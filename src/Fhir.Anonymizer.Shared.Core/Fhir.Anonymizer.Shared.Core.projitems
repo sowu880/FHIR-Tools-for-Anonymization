@@ -38,11 +38,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)PartitionedExecution\IFhirDataConsumer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PartitionedExecution\IFhirDataReader.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Processors\AnonymizationOperations.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Processors\SubstitueProcessor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Processors\EncryptionProcessor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Processors\CryptoHashProcessor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Processors\DateShiftProcessor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Processors\IAnonymizerProcessor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Processors\KeepProcessor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Processors\RedactProcessor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\SubstituteUtility.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\EncryptUtility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\CryptoHashUtility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\DateTimeUtility.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\PostalCodeUtility.cs" />
