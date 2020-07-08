@@ -1,13 +1,13 @@
 {
-  "dataFactoryName": "DataFactoryName",
+  "dataFactoryName": "sowuadf",
   "resourceLocation": "WestUS",
-  "sourceStorageAccountName": "sourceStorageAccountName",
-  "sourceStorageAccountKey": "sourceStorageAccountKey",
-  "destinationStorageAccountName": "destinationStorageAccountName",
-  "destinationStorageAccountKey": "destinationStorageAccountKey",
-  "sourceStorageContainerName": "sourceStorageContainerName",
-  "destinationStorageContainerName": "destinationStorageContainerName",
+  "sourceStorageAccountName": "sowustorage",
+  "sourceStorageAccountKey": "FfEb/xYwZDaKhYU37p06oICu5XRcr0AAgnFZ4stZV8NWmF0WlJPXEb/KLJBK8B6sQ/uCbhzvdLGxq4oK/0cJPg==",
+  "destinationStorageAccountName": "sowustorage",
+  "destinationStorageAccountKey": "FfEb/xYwZDaKhYU37p06oICu5XRcr0AAgnFZ4stZV8NWmF0WlJPXEb/KLJBK8B6sQ/uCbhzvdLGxq4oK/0cJPg==",
+  "sourceStorageContainerName": "sowucontainer",
+  "destinationStorageContainerName": "test",
   "sourceContainerFolderPath": "",
   "destinationContainerFolderPath": "",
-  "activityContainerName": "customactivityContainerName"
+  "activityContainerName": "test"
 }

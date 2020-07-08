@@ -1,18 +1,34 @@
 ﻿using System.Text;
+using Hl7.Fhir.ElementModel;
+using Hl7.Fhir.Specification;
+using Hl7.Fhir.Support.Model;
+using Hl7.Fhir.Utility;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 
 namespace Fhir.Anonymizer.Core.Utility
 {
     public class SubstituteUtility
     {
-        public static string Substitute(string input,char ch)
+        private static readonly PocoStructureDefinitionSummaryProvider s_provider = new PocoStructureDefinitionSummaryProvider();
+        public static void Substitute(ElementNode node, ElementNode targetNode)
         {
-            if (string.IsNullOrEmpty(input))
+
+            node.Value = targetNode.Value;
+            //var children = node.Children().Cast<ElementNode>().ToList();
+            foreach (var child in node.Children().Cast<ElementNode>().ToList())
             {
-                return input;
+                node.Remove(child);
             }
-            var strlen = input.Length;
-            string result = new string(ch, strlen);
-            return result;
+
+            foreach (var child in targetNode.Children().Cast<ElementNode>())
+            {
+                node.Add(s_provider, child);
+            }
+            node.Value = targetNode.Value;
         }
     }
 }
