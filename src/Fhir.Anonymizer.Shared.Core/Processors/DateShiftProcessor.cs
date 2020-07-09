@@ -27,7 +27,7 @@ namespace Fhir.Anonymizer.Core.Processors
             return new DateShiftProcessor(parameters.DateShiftKey, parameters.DateShiftKeyPrefix, parameters.EnablePartialDatesForRedact);
         }
 
-        public ProcessResult Process(ElementNode node, AnonymizationFhirPathRule rule)
+        public ProcessResult Process(ElementNode node, AnonymizerNodeProcessSetting processSetting)
         {
             var processResult = new ProcessResult();
             if (string.IsNullOrEmpty(node?.Value?.ToString()))

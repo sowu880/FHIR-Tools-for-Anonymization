@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Fhir.Anonymizer.Core.Utility;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
@@ -13,9 +14,18 @@ namespace Fhir.Anonymizer.Core.UnitTests.Utility
 
         public static IEnumerable<object[]> GetSameElementNode()
         {
-            yield return new object[] { ElementNode.FromElement(new FhirString("test").ToTypedElement()), ElementNode.FromElement(ElementNode.ForPrimitive("345345"))};
+            yield return new object[] { ElementNode.FromElement(new FhirUri("testuri").ToTypedElement()), ElementNode.FromElement(ElementNode.ForPrimitive("new")) };
+            yield return new object[] { ElementNode.FromElement(new FhirString("test").ToTypedElement()), ElementNode.FromElement(ElementNode.ForPrimitive("new"))};
             yield return new object[] { ElementNode.FromElement(new Date("2015-02-07").ToTypedElement()), ElementNode.FromElement(new Date("2015-02-14").ToTypedElement()) };
             yield return new object[] { CreateTestNode(), CreateNewNode() };
+            //yield return new object[] { CreateTestResource(), CreateNewResource() };
+
+        }
+        public static IEnumerable<object[]> GetDifferentElementNode()
+        {
+            yield return new object[] { ElementNode.FromElement(new FhirString("test").ToTypedElement()), ElementNode.FromElement(new FhirUri("patient/example").ToTypedElement()) };
+            //yield return new object[] { ElementNode.FromElement(new Date("2015-02-07").ToTypedElement()), ElementNode.FromElement(new Date("2015-02-14").ToTypedElement()) };
+            //yield return new object[] { CreateTestNode(), CreateNewNode() };
             //yield return new object[] { CreateTestResource(), CreateNewResource() };
 
         }
@@ -27,7 +37,16 @@ namespace Fhir.Anonymizer.Core.UnitTests.Utility
             SubstituteUtility.Substitute(node, targetnode);
             Assert.Equal(Standardize(node), Standardize(targetnode));
         }
-        
+        /*
+        [Theory]
+        [MemberData(nameof(GetDifferentElementNode))]
+        public void GivenAnTagetElementNodeInDifferentType_WhenSubstitute_ExceptionWillBeThrown(ElementNode node, ElementNode targetnode)
+        {
+            
+            Assert.Throws<Exception>(() => SubstituteUtility.Substitute(node, targetnode));
+            
+        }
+        */
         private static ElementNode CreateTestNode()
         {
             string content = "{\r\n  \"use\": \"home\",\r\n   \"city\": \"Santa Monica\",\r\n   \"postalCode\": \"39042\",\r\n  }";

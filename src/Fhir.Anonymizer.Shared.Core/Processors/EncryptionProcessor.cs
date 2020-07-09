@@ -17,7 +17,7 @@ namespace Fhir.Anonymizer.Core.Processors
             _key = Encoding.UTF8.GetBytes(encryptKey);
         }
 
-        public ProcessResult Process(ElementNode node, AnonymizationFhirPathRule rule)
+        public ProcessResult Process(ElementNode node, AnonymizerNodeProcessSetting processSetting)
         {
             var processResult = new ProcessResult();
             if (string.IsNullOrEmpty(node?.Value?.ToString()))

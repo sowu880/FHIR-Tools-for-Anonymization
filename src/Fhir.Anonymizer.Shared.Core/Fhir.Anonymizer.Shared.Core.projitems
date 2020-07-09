@@ -17,6 +17,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)AnonymizationConfigurations\AnonymizerRule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AnonymizationConfigurations\AnonymizerRuleType.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AnonymizationConfigurations\AnonymizerSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AnonymizationConfigurations\AnonymizerNodeProcessSetting.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AnonymizationConfigurations\DateShiftScope.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AnonymizationConfigurations\ParameterConfiguration.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AnonymizerConfigurationManager.cs" />

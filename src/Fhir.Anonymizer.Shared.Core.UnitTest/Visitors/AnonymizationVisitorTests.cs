@@ -10,6 +10,7 @@ using Fhir.Anonymizer.Core.Utility;
 using Fhir.Anonymizer.Core.Visitors;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
+using Hl7.Fhir.Serialization;
 using Hl7.FhirPath;
 using Xunit;
 
@@ -91,6 +92,36 @@ namespace Fhir.Anonymizer.Core.UnitTests.Visitors
             patient = patientNode.ToPoco<Patient>();
             Assert.Single(patient.Meta.Security);
             Assert.Contains(SecurityLabels.ENCRYPT.Code, patient.Meta.Security.Select(s => s.Code));
+        }
+
+        [Fact]
+        public void GivenASubstituteRule_WhenProcess_NodeShouldBeSubstituted()
+        {
+            AnonymizationFhirPathRule[] rules = new AnonymizationFhirPathRule[]
+            {
+                new AnonymizationFhirPathRule("Patient.address", "address", "Patient", "substitute", AnonymizerRuleType.FhirPathRule, "Patient.address","{\r\n  \"use\": \"home\",\r\n  \"type\": \"both\",\r\n  \"text\": \"room\",\r\n  \"city\": \"Beijing\",\r\n  \"district\": \"Haidian\",\r\n  \"state\": \"Beijing\",\r\n  \"postalCode\": \"100871\",\r\n  \"period\": {\r\n    \"start\": \"1974-12-25\"\r\n  }\r\n}"),
+            };
+
+            AnonymizationVisitor visitor = new AnonymizationVisitor(rules, CreateTestProcessors());
+
+            var patient = CreateTestPatient();
+            var patientNode = ElementNode.FromElement(patient.ToTypedElement());
+            patientNode.Accept(visitor);
+            patientNode.RemoveNullChildren();
+            Assert.Equal(Standardize(ElementNode.FromElement(patientNode.Select("Patient.address").FirstOrDefault())), "{\r\n  \"use\": \"home\",\r\n  \"type\": \"both\",\r\n  \"text\": \"room\",\r\n  \"city\": \"Beijing\",\r\n  \"district\": \"Haidian\",\r\n  \"state\": \"Beijing\",\r\n  \"postalCode\": \"100871\",\r\n  \"period\": {\r\n    \"start\": \"1974-12-25\"\r\n  }\r\n}");
+            patient = patientNode.ToPoco<Patient>();
+            Assert.Single(patient.Meta.Security);
+            Assert.Contains(SecurityLabels.SUBSTITUTE.Code, patient.Meta.Security.Select(s => s.Code));
+        }
+
+        private static string Standardize(ElementNode node)
+        {
+
+            FhirJsonSerializationSettings serializationSettings = new FhirJsonSerializationSettings
+            {
+                Pretty = true,
+            };
+            return node.ToJson(serializationSettings);
         }
 
         [Fact]

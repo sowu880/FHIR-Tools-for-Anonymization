@@ -46,19 +46,7 @@
     },
     {
       "path": "nodesByType('Address')",
-      "method": "substitute",
-      "value": {
-        "use": "home",
-        "type": "both",
-        "text": "",
-        "city": "Beijing",
-        "district": "Haidian",
-        "state": "Beijing",
-        "postalCode": "100871",
-        "period": {
-          "start": "1974-12-25"
-        }
-      }
+      "method": "redact"
     },
     {
       "path": "nodesByType('Annotation')",

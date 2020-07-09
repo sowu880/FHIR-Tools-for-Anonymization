@@ -1,0 +1,50 @@
+﻿{
+  "fhirPathRules": [
+    
+    {
+      "path": "Patient.nodesByType('Address').city",
+      "method": "redact"
+    },
+    
+    {
+      "path": "nodesByType('Address')",
+      "method": "substitute",
+      "value": {
+        "use": "home",
+        "type": "both",
+        "text": "",
+        "city": "Beijing",
+        "district": "Haidian",
+        "state": "Beijing",
+        "postalCode": "100871",
+        "period": {
+          "start": "1974-12-25"
+        }
+      }
+    }
+    
+  ],
+  "parameters": {
+    "dateShiftKey": "123",
+    "cryptoHashKey": "123",
+    "enablePartialAgesForRedact": true,
+    "enablePartialDatesForRedact": true,
+    "enablePartialZipCodesForRedact": true,
+    "restrictedZipCodeTabulationAreas": [
+      "036",
+      "059",
+      "102",
+      "203",
+      "205",
+      "369",
+      "556",
+      "692",
+      "821",
+      "823",
+      "878",
+      "879",
+      "884",
+      "893"
+    ]
+  }
+}

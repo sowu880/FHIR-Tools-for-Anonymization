@@ -33,7 +33,7 @@ namespace Fhir.Anonymizer.Core.Processors
                 parameters.EnablePartialZipCodesForRedact, parameters.RestrictedZipCodeTabulationAreas);
         }
 
-        public ProcessResult Process(ElementNode node, AnonymizationFhirPathRule rule)
+        public ProcessResult Process(ElementNode node, AnonymizerNodeProcessSetting processSetting)
         {
             if (string.IsNullOrEmpty(node?.Value?.ToString()))
             {

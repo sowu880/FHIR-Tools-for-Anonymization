@@ -20,7 +20,7 @@ namespace Fhir.Anonymizer.Core.Processors
             _cryptoHashFunction = (input) => CryptoHashUtility.ComputeHmacSHA256Hash(input, _cryptoHashKey);
         }
 
-        public ProcessResult Process(ElementNode node, AnonymizationFhirPathRule rule)
+        public ProcessResult Process(ElementNode node, AnonymizerNodeProcessSetting processSetting)
         {
             var processResult = new ProcessResult();
             if (string.IsNullOrEmpty(node?.Value?.ToString()))

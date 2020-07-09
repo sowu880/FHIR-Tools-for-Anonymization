@@ -6,6 +6,6 @@ namespace Fhir.Anonymizer.Core.Processors
 {
     public interface IAnonymizerProcessor
     {
-        public ProcessResult Process(ElementNode node, AnonymizationFhirPathRule rule);
+        public ProcessResult Process(ElementNode node, AnonymizerNodeProcessSetting processSetting);
     }
 }

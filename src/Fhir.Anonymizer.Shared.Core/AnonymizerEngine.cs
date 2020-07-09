@@ -11,6 +11,7 @@ using Hl7.Fhir.Model;
 using Hl7.Fhir.Serialization;
 using Hl7.FhirPath;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Linq;
 
 namespace Fhir.Anonymizer.Core
 {
@@ -79,8 +80,14 @@ namespace Fhir.Anonymizer.Core
         {
             EnsureArg.IsNotNullOrEmpty(json, nameof(json));
 
+            JsonLoadSettings jsonsettings = new JsonLoadSettings
+            {
+                DuplicatePropertyNameHandling = DuplicatePropertyNameHandling.Error
+            };
+            var token = JToken.Parse(json, jsonsettings);
             var resource = _parser.Parse<Resource>(json);
             Resource anonymizedResource = AnonymizeResource(resource, settings);
+            
 
             FhirJsonSerializationSettings serializationSettings = new FhirJsonSerializationSettings
             {

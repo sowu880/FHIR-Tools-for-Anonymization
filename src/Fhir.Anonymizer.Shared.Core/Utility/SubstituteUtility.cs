@@ -17,7 +17,7 @@ namespace Fhir.Anonymizer.Core.Utility
         public static void Substitute(ElementNode node, ElementNode targetNode)
         {
 
-            node.Value = targetNode.Value;
+            //node.Value = targetNode.Value;
             //var children = node.Children().Cast<ElementNode>().ToList();
             foreach (var child in node.Children().Cast<ElementNode>().ToList())
             {
