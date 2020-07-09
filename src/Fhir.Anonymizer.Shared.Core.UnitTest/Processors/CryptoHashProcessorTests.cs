@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Fhir.Anonymizer.Core.AnonymizationConfigurations;
+using Fhir.Anonymizer.Core.AnonymizerConfigurations;
 using Fhir.Anonymizer.Core.Processors;
 using Hl7.Fhir.ElementModel;
 using Hl7.Fhir.Model;
@@ -46,7 +48,7 @@ namespace Fhir.Anonymizer.Core.UnitTests.Processors
         {
             var processor = new CryptoHashProcessor(TestHashKey);
             var node = CreateNodeFromElement(element);
-            processor.Process(node);
+            processor.Process(node, CreateTestRule());
             Assert.Equal(expectedValue, node.Value);
         }
 
@@ -57,13 +59,18 @@ namespace Fhir.Anonymizer.Core.UnitTests.Processors
             var processor = new CryptoHashProcessor(TestHashKey);
             var referenceNode = CreateNodeFromElement(reference)
                 .Children("reference").FirstOrDefault() as ElementNode;
-            processor.Process(referenceNode);
+            processor.Process(referenceNode, CreateTestRule());
             Assert.Equal(expectedValue, referenceNode.Value);
         }
 
         private static ElementNode CreateNodeFromElement(Element element)
         {
             return ElementNode.FromElement(element.ToTypedElement());
+        }
+
+        private static AnonymizationFhirPathRule CreateTestRule()
+        {
+            return new AnonymizationFhirPathRule("Resource", "Resource", "Resource", "cryptoHash", AnonymizerRuleType.FhirPathRule, "Resource");
         }
     }
 }

@@ -23,10 +23,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)PartitionedExecution\FhirPartitionedExecutionTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PartitionedExecution\FhirStreamConsumerTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PartitionedExecution\FhirStreamReaderTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Processors\SubstituteProcessorTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Processors\CryptoHashProcessorTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Processors\DateShiftProcessorTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Processors\RedactProcessorTests.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utility\SubstituteUtilityTests .cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utility\SubstituteUtilityTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\EncryptUtilityTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\CryptoHashUtilityTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utility\DateTimeUtilityTests.cs" />

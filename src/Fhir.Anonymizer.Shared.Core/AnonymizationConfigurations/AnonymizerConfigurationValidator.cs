@@ -26,7 +26,7 @@ namespace Fhir.Anonymizer.Core.AnonymizerConfigurations
                 // Grammar check on FHIR path
                 try
                 {
-                    compiler.Compile(rule[Constants.PathKey]);
+                    compiler.Compile(rule[Constants.PathKey].ToString());
                 }
                 catch (Exception ex)
                 {
@@ -34,7 +34,7 @@ namespace Fhir.Anonymizer.Core.AnonymizerConfigurations
                 }
 
                 // Method validate
-                string method = rule[Constants.MethodKey];
+                string method = rule[Constants.MethodKey].ToString();
                 if (!Enum.TryParse<AnonymizerMethod>(method, true, out _))
                 {
                     throw new AnonymizerConfigurationErrorsException($"{method} not support.");

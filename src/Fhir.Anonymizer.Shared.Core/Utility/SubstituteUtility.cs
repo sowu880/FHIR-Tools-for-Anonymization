@@ -24,8 +24,10 @@ namespace Fhir.Anonymizer.Core.Utility
                 node.Remove(child);
             }
 
-            foreach (var child in targetNode.Children().Cast<ElementNode>())
+            var newChildren =  targetNode.Children().Select(element =>ElementNode.FromElement(element)).ToList();
+            foreach (var child in newChildren)
             {
+                //targetNode.Remove(child);
                 node.Add(s_provider, child);
             }
             node.Value = targetNode.Value;

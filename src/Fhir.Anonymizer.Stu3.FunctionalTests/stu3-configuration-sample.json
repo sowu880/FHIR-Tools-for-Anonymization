@@ -6,6 +6,24 @@
     },
 
     {
+
+      "path": "Patient.address",
+      "method": "substitute",
+      "target": {
+        "use": "home",
+        "type": "both",
+        "text": "",
+        "city": "****",
+        "district": "****",
+        "state": "**",
+        "postalCode": "39**",
+        "period": {
+          "start": "1974-12-25"
+        }
+      }
+    },
+
+    {
       "path": "Organization.identifier",
       "method": "keep"
     },

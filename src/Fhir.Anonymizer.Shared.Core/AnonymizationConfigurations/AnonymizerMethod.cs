@@ -6,6 +6,7 @@
         DateShift,
         CryptoHash,
         Encrypt,
-        Keep
+        Keep,
+        Substitute,
     }
 }

@@ -24,11 +24,15 @@ namespace Fhir.Anonymizer.Core
 
         internal const string PathKey = "path";
         internal const string MethodKey = "method";
+        internal const string ValueKey = "value";
 
         internal const int DefaultPartitionedExecutionCount = 4;
         internal const int DefaultPartitionedExecutionBatchSize = 1000;
 
         internal const string GeneralResourceType = "Resource";
         internal const string GeneralDomainResourceType = "DomainResource";
+
+        internal const string Substitute = "substitute";
+        internal const string ValueForSub = "";
     }
 }

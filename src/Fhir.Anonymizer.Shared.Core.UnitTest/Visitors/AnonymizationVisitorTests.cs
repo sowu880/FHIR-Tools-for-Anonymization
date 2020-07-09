@@ -363,14 +363,15 @@ namespace Fhir.Anonymizer.Core.UnitTests.Visitors
             DateShiftProcessor dateShiftProcessor = new DateShiftProcessor("123", "123", false);
             CryptoHashProcessor cryptoHashProcessor = new CryptoHashProcessor("123");
             EncryptProcessor encryptProcessor = new EncryptProcessor("1234567890123456");
-            SubstituteProcessor SubstituteProcessor = new SubstituteProcessor("");
+            SubstituteProcessor substituteProcessor = new SubstituteProcessor();
             Dictionary<string, IAnonymizerProcessor> processors = new Dictionary<string, IAnonymizerProcessor>()
             {
                 { "KEEP", keepProcessor},
                 { "REDACT", redactProcessor},
                 { "DATESHIFT", dateShiftProcessor},
                 { "CRYPTOHASH", cryptoHashProcessor},
-                { "ENCRYPT", encryptProcessor }
+                { "ENCRYPT", encryptProcessor },
+                { "SUBSTITUTE", substituteProcessor }
             };
 
             return processors;

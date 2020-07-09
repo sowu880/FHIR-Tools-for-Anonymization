@@ -8,35 +8,29 @@ using System.Reflection;
 using System.Linq;
 using System;
 using Hl7.Fhir.Serialization;
+using Newtonsoft.Json;
 using System.IO;
+using Fhir.Anonymizer.Core.AnonymizationConfigurations;
 
 namespace Fhir.Anonymizer.Core.Processors
 {
     public class SubstituteProcessor : IAnonymizerProcessor
     {
-        private readonly string substitutetest;
+        //private readonly string substitutetest;
         private readonly ILogger _logger = AnonymizerLogging.CreateLogger<SubstituteProcessor>();
+        public SubstituteProcessor() { }
 
-        public SubstituteProcessor(string SubstituteText)
+        public ProcessResult Process(ElementNode node, AnonymizationFhirPathRule rule)
         {
-            substitutetest = SubstituteText;
-        }
-
-        public ProcessResult Process(ElementNode node)
-        {
+            
             var processResult = new ProcessResult();
-            if (string.IsNullOrEmpty(node?.Value?.ToString()))
-            {
-                return processResult;
-            }
-
             var instanceType = node.InstanceType.ToString();
             var assembly = Assembly.GetAssembly(typeof(Patient));
             Type objectType = assembly.GetTypes().Where(type => type.IsClass && type.Name == instanceType).Single();
 
             var parser = new FhirJsonParser();
 
-            var newnode = ElementNode.FromElement(parser.Parse(substitutetest, objectType).ToTypedElement());
+            var newnode = ElementNode.FromElement(parser.Parse(rule.Value, objectType).ToTypedElement());
 
             SubstituteUtility.Substitute(node, newnode);
             _logger.LogDebug($"Fhir value at '{node.Location}' has been substituted.");

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Fhir.Anonymizer.Core.AnonymizationConfigurations;
 using Fhir.Anonymizer.Core.AnonymizerConfigurations;
 using Fhir.Anonymizer.Core.Extensions;
 using Fhir.Anonymizer.Core.Models;
@@ -32,7 +33,7 @@ namespace Fhir.Anonymizer.Core.Processors
                 parameters.EnablePartialZipCodesForRedact, parameters.RestrictedZipCodeTabulationAreas);
         }
 
-        public ProcessResult Process(ElementNode node)
+        public ProcessResult Process(ElementNode node, AnonymizationFhirPathRule rule)
         {
             if (string.IsNullOrEmpty(node?.Value?.ToString()))
             {

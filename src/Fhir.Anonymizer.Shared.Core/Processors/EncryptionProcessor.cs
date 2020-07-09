@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Fhir.Anonymizer.Core.AnonymizationConfigurations;
 using Fhir.Anonymizer.Core.Models;
 using Fhir.Anonymizer.Core.Utility;
 using Hl7.Fhir.ElementModel;
@@ -16,7 +17,7 @@ namespace Fhir.Anonymizer.Core.Processors
             _key = Encoding.UTF8.GetBytes(encryptKey);
         }
 
-        public ProcessResult Process(ElementNode node)
+        public ProcessResult Process(ElementNode node, AnonymizationFhirPathRule rule)
         {
             var processResult = new ProcessResult();
             if (string.IsNullOrEmpty(node?.Value?.ToString()))

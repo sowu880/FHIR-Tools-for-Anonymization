@@ -100,7 +100,7 @@ namespace Fhir.Anonymizer.Core.Visitors
                 
                 foreach (var matchNode in matchNodes)
                 {
-                    resultOnRule.Update(ProcessNodeRecursive(matchNode, _processors[method], _visitedNodes));
+                    resultOnRule.Update(ProcessNodeRecursive(matchNode, _processors[method], _visitedNodes, rule));
                 }
                 LogProcessResult(node, rule, resultOnRule);
 
@@ -133,17 +133,9 @@ namespace Fhir.Anonymizer.Core.Visitors
                                     || string.Equals(Constants.GeneralDomainResourceType, r.ResourceType));
         }
 
-        public ProcessResult ProcessNodeRecursive(ElementNode node, IAnonymizerProcessor processor, HashSet<ElementNode> visitedNodes)
+        private void RecursiveAddVisitedNodes(ElementNode node, HashSet<ElementNode> visitedNodes)
         {
-            ProcessResult result = new ProcessResult();
-            if (visitedNodes.Contains(node))
-            {
-                return result;
-            }
-            
-            result = processor.Process(node);
             visitedNodes.Add(node);
-
             foreach (var child in node.Children().Cast<ElementNode>())
             {
                 if (child.IsFhirResource())
@@ -151,7 +143,35 @@ namespace Fhir.Anonymizer.Core.Visitors
                     continue;
                 }
 
-                result.Update(ProcessNodeRecursive(child, processor, visitedNodes));
+                RecursiveAddVisitedNodes(child, visitedNodes);
+            }
+            return;
+        }
+        public ProcessResult ProcessNodeRecursive(ElementNode node, IAnonymizerProcessor processor, HashSet<ElementNode> visitedNodes, AnonymizationFhirPathRule rule)
+        {
+            ProcessResult result = new ProcessResult();
+            if (visitedNodes.Contains(node))
+            {
+                return result;
+            }
+            
+            result = processor.Process(node, rule);
+            if (rule.Method == Constants.Substitute)
+            {
+                RecursiveAddVisitedNodes(node, visitedNodes);
+                return result;
+            }
+            
+            visitedNodes.Add(node);
+            
+            foreach (var child in node.Children().Cast<ElementNode>())
+            {
+                if (child.IsFhirResource())
+                {
+                    continue;
+                }
+
+                result.Update(ProcessNodeRecursive(child, processor, visitedNodes, rule));
             }
 
             return result;

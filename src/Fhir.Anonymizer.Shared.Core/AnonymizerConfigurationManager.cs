@@ -22,7 +22,9 @@ namespace Fhir.Anonymizer.Core
 
             _configuration = configuration;
 
-            FhirPathRules = _configuration.FhirPathRules.Select(entry => AnonymizationFhirPathRule.CreateAnonymizationFhirPathRule(entry)).ToArray();
+            FhirPathRules = _configuration.FhirPathRules.
+                Select(entry => AnonymizationFhirPathRule.CreateAnonymizationFhirPathRule(
+                    entry.ToDictionary(pair=>pair.Key, pair=>pair.Value.ToString()))).ToArray();
         }
 
         public static AnonymizerConfigurationManager CreateFromConfigurationFile(string configFilePath)

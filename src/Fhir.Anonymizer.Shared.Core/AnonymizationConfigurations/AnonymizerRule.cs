@@ -10,16 +10,19 @@ namespace Fhir.Anonymizer.Core.AnonymizerConfigurations
         
         public string Method { get; set; }
 
+        public string Value { get; set; }
+
         public AnonymizerRuleType Type { get; set; }
 
         public string Source { get; set; }
 
-        public AnonymizerRule(string path, string method, AnonymizerRuleType type, string source)
+        public AnonymizerRule(string path, string method, AnonymizerRuleType type, string source, string value)
         {
             Path = path;
             Method = method;
             Type = type;
             Source = source;
+            Value = value;
         }
     }
 }

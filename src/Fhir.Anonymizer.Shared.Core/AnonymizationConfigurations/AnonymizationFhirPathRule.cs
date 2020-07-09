@@ -37,7 +37,16 @@ namespace Fhir.Anonymizer.Core.AnonymizationConfigurations
 
             string path = config[Constants.PathKey];
             string method = config[Constants.MethodKey];
-
+            string value = "";
+            if (method=="substitute" && !config.ContainsKey(Constants.ValueKey))
+            {
+                throw new ArgumentException("Missing target in rule config");
+            }
+            if (config.ContainsKey(Constants.ValueKey))
+            {
+                value = config[Constants.ValueKey];
+            }
+            
             // Parse expression and resource type from path
             string resourceType = null;
             string expression = null;
@@ -54,11 +63,11 @@ namespace Fhir.Anonymizer.Core.AnonymizationConfigurations
                 expression = path;
             }
 
-            return new AnonymizationFhirPathRule(path, expression, resourceType, method, AnonymizerRuleType.FhirPathRule, path);
+            return new AnonymizationFhirPathRule(path, expression, resourceType, method, AnonymizerRuleType.FhirPathRule, path, value);
         }
 
-        public AnonymizationFhirPathRule(string path, string expression, string resourceType, string method, AnonymizerRuleType type, string source)
-            : base(path, method, type, source)
+        public AnonymizationFhirPathRule(string path, string expression, string resourceType, string method, AnonymizerRuleType type, string source, string value="")
+            : base(path, method, type, source,value)
         {
             if (string.IsNullOrEmpty(expression))
             {
